@@ -224,4 +224,4 @@ def snic(
     except IndexError:
         pass
 
-    return label_map, distance_map, real_number_of_pixels
+    return label_map, distance_map, real_number_of_pixels, centroids

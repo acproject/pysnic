@@ -8,7 +8,7 @@ from pysnic.algorithms.snic import snic
 
 
 # load image
-color_image = np.array(Image.open(resource_stream(__name__, "../data/orchid.jpg")))
+color_image = np.array(Image.open(resource_stream(__name__, "../data/20x.png")).convert("RGB"))
 lab_image = skimage.color.rgb2lab(color_image).tolist()
 number_of_pixels = color_image.shape[0] * color_image.shape[1]
 
@@ -17,7 +17,7 @@ number_of_segments = 100
 compactness = 10.00
 
 
-segmentation, _, number_of_segments = snic(
+segmentation, _, number_of_segments, centroids = snic(
     lab_image, number_of_segments, compactness,
     update_func=lambda num_pixels: print("processed %05.2f%%" % (num_pixels * 100 / number_of_pixels)))
 
